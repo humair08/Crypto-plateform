@@ -9,7 +9,7 @@
   },
   "scripts": {
     "dev": "tsx watch src/index.ts",
-    "build": "tsc -p tsconfig.json",
+    "build": "prisma generate --schema=./prisma/schema.prisma && tsc -p tsconfig.json",
     "start": "node dist/index.js",
     "prestart": "node -e \"if(!require('fs').existsSync('dist')){require('child_process').execSync('npm run build',{stdio:'inherit'})}\"",
     "lint": "eslint . --ext .ts",
@@ -20,7 +20,7 @@
     "db:push": "prisma db push",
     "db:seed": "tsx src/db/seed.ts",
     "prepare": "npm run build",
-    "postinstall": "prisma generate"
+    "postinstall": "node -e \"if(process.env.SKIP_PRISMA_GENERATE==='true'){console.log('SKIP_PRISMA_GENERATE is set; skipping prisma generate')}else{try{require('child_process').execSync('prisma generate --schema=./prisma/schema.prisma',{stdio:'inherit'})}catch(e){console.warn('prisma generate failed during postinstall; continuing without failing build')} }\""
   },
   "dependencies": {
     "express": "^4.18.2",
