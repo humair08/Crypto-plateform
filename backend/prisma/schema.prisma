@@ -1,0 +1,325 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String     @id @default(cuid())
+  email         String     @unique
+  username      String     @unique
+  password      String?
+  firstName     String?
+  lastName      String?
+  avatar        String?
+  bio           String?
+  
+  // Authentication
+  emailVerified Boolean    @default(false)
+  twoFactorEnabled Boolean @default(false)
+  twoFactorSecret String?
+  
+  // Status
+  status        UserStatus @default(ACTIVE)
+  kycStatus     KYCStatus  @default(UNSUBMITTED)
+  lastLogin     DateTime?
+  stripeCustomerId String?
+  balance       Decimal    @db.Decimal(10, 2) @default(0)
+  
+  // Relationships
+  roles         Role[]     @relation("UserRoles")
+  permissions   Permission[] @relation("UserPermissions")
+  sessions      Session[]
+  oauthAccounts OAuthAccount[]
+  notifications Notification[]
+  payments      Payment[]
+  wallet        Wallet?
+  transactions  Transaction[]
+  bets          Bet[]
+  
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+  
+  @@map("users")
+}
+
+model Role {
+  id          String     @id @default(cuid())
+  name        String     @unique
+  description String?
+  permissions Permission[]
+  users       User[]     @relation("UserRoles")
+  
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  
+  @@map("roles")
+}
+
+model Permission {
+  id          String     @id @default(cuid())
+  name        String     @unique
+  description String?
+  action      String
+  resource    String
+  roles       Role[]
+  users       User[]     @relation("UserPermissions")
+  
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  
+  @@map("permissions")
+}
+
+model Session {
+  id        String     @id @default(cuid())
+  userId    String
+  user      User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  token     String     @unique
+  expiresAt DateTime
+  
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  
+  @@map("sessions")
+}
+
+model OAuthAccount {
+  id        String     @id @default(cuid())
+  userId    String
+  user      User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  provider  String
+  providerAccountId String
+  
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  
+  @@unique([provider, providerAccountId])
+  @@map("oauth_accounts")
+}
+
+model Notification {
+  id        String     @id @default(cuid())
+  userId    String
+  user      User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  title     String
+  message   String
+  type      NotificationType @default(INFO)
+  read      Boolean    @default(false)
+  link      String?
+  
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  
+  @@map("notifications")
+}
+
+model Payment {
+  id        String     @id @default(cuid())
+  userId    String
+  user      User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  stripePaymentIntentId String? @unique
+  amount    Decimal    @db.Decimal(10, 2)
+  currency  String     @default("USD")
+  status    PaymentStatus @default(PENDING)
+  method    PaymentMethod
+  
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  
+  @@map("payments")
+}
+
+model Wallet {
+  id        String     @id @default(cuid())
+  userId    String     @unique
+  user      User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  balance   Decimal    @db.Decimal(18, 8) @default(0)
+  currency  String     @default("USDT")
+  address   String?
+  transactions Transaction[]
+  
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  
+  @@map("wallets")
+}
+
+model Transaction {
+  id        String     @id @default(cuid())
+  walletId  String
+  wallet    Wallet     @relation(fields: [walletId], references: [id], onDelete: Cascade)
+  userId    String
+  user      User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  type      TransactionType
+  amount    Decimal    @db.Decimal(18, 8)
+  status    TransactionStatus @default(PENDING)
+  description String?
+  reference String?
+  
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  
+  @@map("transactions")
+}
+
+model Bet {
+  id        String     @id @default(cuid())
+  userId    String
+  user      User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  eventId   String
+  event     BettingEvent @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  
+  type      BetType
+  amount    Decimal    @db.Decimal(10, 2)
+  odds      Decimal    @db.Decimal(10, 4)
+  potential Decimal    @db.Decimal(10, 2)
+  status    BetStatus  @default(PENDING)
+  result    BetResult?
+  
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  
+  @@map("bets")
+}
+
+model BettingEvent {
+  id        String     @id @default(cuid())
+  name      String
+  description String?
+  type      EventType
+  status    EventStatus @default(ACTIVE)
+  
+  startTime DateTime
+  endTime   DateTime?
+  
+  odds      Json       @default("{}")
+  bets      Bet[]
+  
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  
+  @@map("betting_events")
+}
+
+model ActivityLog {
+  id        String     @id @default(cuid())
+  action    String
+  resource  String
+  resourceId String?
+  userId    String?
+  ipAddress String?
+  userAgent String?
+  status    String
+  
+  createdAt DateTime   @default(now())
+  
+  @@map("activity_logs")
+}
+
+model Setting {
+  id        String     @id @default(cuid())
+  key       String     @unique
+  value     Json
+  
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  
+  @@map("settings")
+}
+
+// Enums
+enum KYCStatus {
+  UNSUBMITTED
+  PENDING
+  VERIFIED
+  REJECTED
+}
+
+enum TransactionStatus {
+  PENDING
+  COMPLETED
+  FAILED
+  CANCELLED
+}
+
+enum UserStatus {
+  ACTIVE
+  INACTIVE
+  SUSPENDED
+  BANNED
+}
+
+enum NotificationType {
+  INFO
+  SUCCESS
+  WARNING
+  ERROR
+}
+
+enum PaymentStatus {
+  PENDING
+  COMPLETED
+  FAILED
+  REFUNDED
+}
+
+enum PaymentMethod {
+  CREDIT_CARD
+  DEBIT_CARD
+  BANK_TRANSFER
+  WALLET
+}
+
+enum TransactionType {
+  DEPOSIT
+  WITHDRAWAL
+  BET_WIN
+  BET_LOSS
+  BONUS
+  REFUND
+}
+
+enum BetType {
+  MONEYLINE
+  SPREAD
+  TOTAL
+  PARLAY
+}
+
+enum BetStatus {
+  PENDING
+  ACCEPTED
+  WON
+  LOST
+  CANCELLED
+  SUSPENDED
+}
+
+enum BetResult {
+  WIN
+  LOSS
+  PUSH
+  CANCELLED
+}
+
+enum EventType {
+  SPORTS
+  ESPORTS
+  POLITICS
+  ENTERTAINMENT
+  OTHER
+}
+
+enum EventStatus {
+  ACTIVE
+  PENDING
+  CLOSED
+  CANCELLED
+}

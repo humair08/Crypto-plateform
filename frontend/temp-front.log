@@ -1,0 +1,114 @@
+﻿playwright.config.ts(17,17): error TS1361: 'devices' cannot be used as a value because it was imported using 'import type'.
+playwright.config.ts(21,17): error TS1361: 'devices' cannot be used as a value because it was imported using 'import type'.
+playwright.config.ts(25,17): error TS1361: 'devices' cannot be used as a value because it was imported using 'import type'.
+playwright.config.ts(29,17): error TS1361: 'devices' cannot be used as a value because it was imported using 'import type'.
+src/app/auth/register/page.tsx(289,19): error TS2322: Type 'Element' is not assignable to type 'string'.
+src/app/dashboard/account/profile/page.tsx(9,3): error TS6133: 'CardFooter' is declared but its value is never read.
+src/app/dashboard/account/profile/page.tsx(18,1): error TS6133: 'useAuthStore' is declared but its value is never read.
+src/app/dashboard/account/profile/page.tsx(24,11): error TS6133: 'isAuthenticated' is declared but its value is never read.
+src/app/dashboard/account/profile/page.tsx(32,18): error TS2339: Property 'phone' does not exist on type 'User'.
+src/app/dashboard/account/profile/page.tsx(33,20): error TS2339: Property 'country' does not exist on type 'User'.
+src/app/dashboard/account/profile/page.tsx(34,22): error TS2339: Property 'birthDate' does not exist on type 'User'.
+src/app/dashboard/bets/place/page.tsx(3,8): error TS6133: 'React' is declared but its value is never read.
+src/app/dashboard/bets/place/page.tsx(9,3): error TS6133: 'CardFooter' is declared but its value is never read.
+src/app/dashboard/bets/place/page.tsx(15,3): error TS6133: 'Radio' is declared but its value is never read.
+src/app/dashboard/bets/place/page.tsx(17,3): error TS6133: 'Toggle' is declared but its value is never read.
+src/app/dashboard/bets/place/page.tsx(23,33): error TS6133: 'TrendingUp' is declared but its value is never read.
+src/app/dashboard/bets/place/page.tsx(36,11): error TS6133: 'isAuthenticated' is declared but its value is never read.
+src/app/dashboard/bets/place/page.tsx(36,37): error TS6133: 'user' is declared but its value is never read.
+src/app/dashboard/events/page.tsx(3,8): error TS6133: 'React' is declared but its value is never read.
+src/app/dashboard/events/page.tsx(15,3): error TS6133: 'Tabs' is declared but its value is never read.
+src/app/dashboard/events/page.tsx(21,18): error TS6133: 'Filter' is declared but its value is never read.
+src/app/dashboard/events/page.tsx(21,26): error TS6133: 'TrendingUp' is declared but its value is never read.
+src/app/dashboard/events/page.tsx(40,11): error TS6133: 'isAuthenticated' is declared but its value is never read.
+src/app/dashboard/events/page.tsx(245,40): error TS6133: 'index' is declared but its value is never read.
+src/app/dashboard/page.tsx(36,11): error TS6133: 'isAuthenticated' is declared but its value is never read.
+src/app/dashboard/wallet/deposit/page.tsx(3,8): error TS6133: 'React' is declared but its value is never read.
+src/app/dashboard/wallet/deposit/page.tsx(15,3): error TS6133: 'Radio' is declared but its value is never read.
+src/app/dashboard/wallet/deposit/page.tsx(23,10): error TS6133: 'CreditCard' is declared but its value is never read.
+src/app/dashboard/wallet/deposit/page.tsx(35,11): error TS6133: 'isAuthenticated' is declared but its value is never read.
+src/app/dashboard/wallet/methods/page.tsx(3,8): error TS6133: 'React' is declared but its value is never read.
+src/app/dashboard/wallet/methods/page.tsx(33,11): error TS6133: 'isAuthenticated' is declared but its value is never read.
+src/app/dashboard/wallet/methods/page.tsx(220,22): error TS2741: Property 'children' is missing in type '{ variant: "ghost"; size: "sm"; icon: Element; onClick: () => void; }' but required in type 'ButtonProps'.
+src/app/dashboard/wallet/page.tsx(32,11): error TS6133: 'isAuthenticated' is declared but its value is never read.
+src/app/dashboard/wallet/page.tsx(36,10): error TS6133: 'availableBalance' is declared but its value is never read.
+src/app/dashboard/wallet/page.tsx(37,10): error TS6133: 'currency' is declared but its value is never read.
+src/app/dashboard/wallet/page.tsx(38,10): error TS6133: 'walletAddress' is declared but its value is never read.
+src/app/dashboard/wallet/page.tsx(164,27): error TS2304: Cannot find name 'currentBalance'.
+src/app/dashboard/wallet/transactions/page.tsx(3,8): error TS6133: 'React' is declared but its value is never read.
+src/app/dashboard/wallet/transactions/page.tsx(19,18): error TS6133: 'Download' is declared but its value is never read.
+src/app/dashboard/wallet/transactions/page.tsx(32,11): error TS6133: 'isAuthenticated' is declared but its value is never read.
+src/app/dashboard/wallet/transactions/page.tsx(142,9): error TS6133: 'getTransactionIcon' is declared but its value is never read.
+src/app/dashboard/wallet/withdraw/page.tsx(14,3): error TS6133: 'Radio' is declared but its value is never read.
+src/app/dashboard/wallet/withdraw/page.tsx(24,11): error TS6133: 'isAuthenticated' is declared but its value is never read.
+src/app/dashboard/wallet/withdraw/page.tsx(24,37): error TS6133: 'user' is declared but its value is never read.
+src/components/layouts/DashboardLayout.tsx(16,3): error TS6133: 'Trophy' is declared but its value is never read.
+src/components/layouts/DashboardLayout.tsx(27,23): error TS6133: 'setSidebarOpen' is declared but its value is never read.
+src/components/layouts/DashboardLayout.tsx(138,11): error TS2322: Type '({ label: string; icon: Element; href: string; active: boolean; children?: undefined; } | { label: string; icon: Element; href: string; active?: undefined; children?: undefined; } | { ...; })[]' is not assignable to type 'SidebarItem[]'.
+  Type '{ label: string; icon: Element; href: string; active: boolean; children?: undefined; } | { label: string; icon: Element; href: string; active?: undefined; children?: undefined; } | { ...; }' is not assignable to type 'SidebarItem'.
+    Type '{ children: { label: string; href: string; }[]; label?: undefined; icon?: undefined; href?: undefined; active?: undefined; }' is not assignable to type 'SidebarItem'.
+      Types of property 'label' are incompatible.
+        Type 'undefined' is not assignable to type 'string'.
+src/components/ProtectedRoute.tsx(20,34): error TS2339: Property 'loading' does not exist on type 'AuthStore'.
+src/components/ProtectedRoute.tsx(55,34): error TS2339: Property 'loading' does not exist on type 'AuthStore'.
+src/components/ui/Avatar/Avatar.tsx(3,1): error TS6133: 'React' is declared but its value is never read.
+src/components/ui/Breadcrumb/Breadcrumb.tsx(3,17): error TS6133: 'ReactNode' is declared but its value is never read.
+src/components/ui/Button/Button.tsx(3,8): error TS6133: 'React' is declared but its value is never read.
+src/components/ui/Button/Button.tsx(55,6): error TS2322: Type '{ children: (ReactNode | Element)[]; form?: string | undefined; formAction?: string | ((formData: FormData) => void | Promise<void>) | undefined; ... 285 more ...; disabled: boolean; }' is not assignable to type 'MotionProps'.
+  Types of property 'onAnimationStart' are incompatible.
+    Type 'AnimationEventHandler<HTMLButtonElement> | undefined' is not assignable to type '((definition: AnimationDefinition) => void) | undefined'.
+      Type 'AnimationEventHandler<HTMLButtonElement>' is not assignable to type '(definition: AnimationDefinition) => void'.
+        Types of parameters 'event' and 'definition' are incompatible.
+          Type 'AnimationDefinition' is not assignable to type 'AnimationEvent<HTMLButtonElement>'.
+            Type 'string' is not assignable to type 'AnimationEvent<HTMLButtonElement>'.
+src/components/ui/Card/Card.tsx(3,8): error TS6133: 'React' is declared but its value is never read.
+src/components/ui/Checkbox/Checkbox.tsx(3,8): error TS6133: 'React' is declared but its value is never read.
+src/components/ui/Dropdown/Dropdown.tsx(3,8): error TS6133: 'React' is declared but its value is never read.
+src/components/ui/Dropdown/Dropdown.tsx(5,1): error TS6133: 'ChevronDown' is declared but its value is never read.
+src/components/ui/index.ts(11,15): error TS2459: Module '"./Button/Button"' declares 'ButtonProps' locally, but it is not exported.
+src/components/ui/index.ts(14,15): error TS2459: Module '"./Card/Card"' declares 'CardProps' locally, but it is not exported.
+src/components/ui/index.ts(16,10): error TS2305: Module '"./Typography"' has no exported member 'Typography'.
+src/components/ui/index.ts(17,15): error TS2459: Module '"./Typography/Typography"' declares 'HeadingProps' locally, but it is not exported.
+src/components/ui/index.ts(17,29): error TS2459: Module '"./Typography/Typography"' declares 'TextProps' locally, but it is not exported.
+src/components/ui/index.ts(20,15): error TS2459: Module '"./Input/Input"' declares 'InputProps' locally, but it is not exported.
+src/components/ui/index.ts(27,15): error TS2459: Module '"./Select/Select"' declares 'SelectProps' locally, but it is not exported.
+src/components/ui/index.ts(30,15): error TS2724: '"./Checkbox/Checkbox"' has no exported member named 'CheckboxProps'. Did you mean 'CheckboxGroup'?
+src/components/ui/index.ts(30,30): error TS2724: '"./Checkbox/Checkbox"' has no exported member named 'CheckboxGroupProps'. Did you mean 'CheckboxGroup'?
+src/components/ui/index.ts(33,15): error TS2724: '"./Radio/Radio"' has no exported member named 'RadioProps'. Did you mean 'RadioGroup'?
+src/components/ui/index.ts(33,27): error TS2724: '"./Radio/Radio"' has no exported member named 'RadioGroupProps'. Did you mean 'RadioGroup'?
+src/components/ui/index.ts(36,15): error TS2459: Module '"./Toggle/Toggle"' declares 'ToggleProps' locally, but it is not exported.
+src/components/ui/index.ts(43,15): error TS2459: Module '"./Modal/Modal"' declares 'ModalProps' locally, but it is not exported.
+src/components/ui/index.ts(46,15): error TS2459: Module '"./Toast/Toast"' declares 'ToastProps' locally, but it is not exported.
+src/components/ui/index.ts(49,15): error TS2459: Module '"./Badge/Badge"' declares 'BadgeProps' locally, but it is not exported.
+src/components/ui/index.ts(52,15): error TS2459: Module '"./Skeleton/Skeleton"' declares 'SkeletonProps' locally, but it is not exported.
+src/components/ui/index.ts(55,15): error TS2459: Module '"./Spinner/Spinner"' declares 'SpinnerProps' locally, but it is not exported.
+src/components/ui/index.ts(62,15): error TS2459: Module '"./Navbar/Navbar"' declares 'NavbarProps' locally, but it is not exported.
+src/components/ui/index.ts(65,15): error TS2459: Module '"./Sidebar/Sidebar"' declares 'SidebarProps' locally, but it is not exported.
+src/components/ui/index.ts(65,29): error TS2459: Module '"./Sidebar/Sidebar"' declares 'SidebarItem' locally, but it is not exported.
+src/components/ui/index.ts(68,15): error TS2724: '"./Breadcrumb/Breadcrumb"' has no exported member named 'BreadcrumbProps'. Did you mean 'Breadcrumb'?
+src/components/ui/index.ts(68,32): error TS2724: '"./Breadcrumb/Breadcrumb"' has no exported member named 'BreadcrumbItem'. Did you mean 'Breadcrumb'?
+src/components/ui/index.ts(71,15): error TS2724: '"./Pagination/Pagination"' has no exported member named 'PaginationProps'. Did you mean 'Pagination'?
+src/components/ui/index.ts(74,15): error TS2459: Module '"./Tabs/Tabs"' declares 'TabsProps' locally, but it is not exported.
+src/components/ui/index.ts(77,15): error TS2459: Module '"./Dropdown/Dropdown"' declares 'DropdownProps' locally, but it is not exported.
+src/components/ui/index.ts(77,30): error TS2724: '"./Dropdown/Dropdown"' has no exported member named 'DropdownItem'. Did you mean 'Dropdown'?
+src/components/ui/index.ts(84,15): error TS2459: Module '"./Avatar/Avatar"' declares 'AvatarProps' locally, but it is not exported.
+src/components/ui/index.ts(87,28): error TS2459: Module '"./Table/Table"' declares 'TableProps' locally, but it is not exported.
+src/components/ui/index.ts(90,15): error TS2459: Module '"./Progress/Progress"' declares 'ProgressProps' locally, but it is not exported.
+src/components/ui/index.ts(90,30): error TS2724: '"./Progress/Progress"' has no exported member named 'ProgressRingProps'. Did you mean 'ProgressRing'?
+src/components/ui/index.ts(97,15): error TS2459: Module '"./Tooltip/Tooltip"' declares 'TooltipProps' locally, but it is not exported.
+src/components/ui/Input/Input.tsx(3,8): error TS6133: 'React' is declared but its value is never read.
+src/components/ui/Modal/Modal.tsx(3,8): error TS6133: 'React' is declared but its value is never read.
+src/components/ui/Navbar/Navbar.tsx(5,19): error TS6133: 'LogOut' is declared but its value is never read.
+src/components/ui/Navbar/Navbar.tsx(22,9): error TS6133: 'logout' is declared but its value is never read.
+src/components/ui/Pagination/Pagination.tsx(48,8): error TS2741: Property 'children' is missing in type '{ variant: "ghost"; size: "sm"; onClick: () => void; disabled: boolean; icon: Element; }' but required in type 'ButtonProps'.
+src/components/ui/Pagination/Pagination.tsx(72,8): error TS2741: Property 'children' is missing in type '{ variant: "ghost"; size: "sm"; onClick: () => void; disabled: boolean; icon: Element; }' but required in type 'ButtonProps'.
+src/components/ui/Progress/Progress.tsx(3,1): error TS6133: 'React' is declared but its value is never read.
+src/components/ui/Radio/Radio.tsx(3,8): error TS6133: 'React' is declared but its value is never read.
+src/components/ui/Select/Select.tsx(3,8): error TS6133: 'React' is declared but its value is never read.
+src/components/ui/Sidebar/Sidebar.tsx(93,3): error TS6133: 'collapsible' is declared but its value is never read.
+src/components/ui/Sidebar/Sidebar.tsx(96,23): error TS6133: 'setIsCollapsed' is declared but its value is never read.
+src/components/ui/Skeleton/Skeleton.tsx(3,1): error TS6133: 'React' is declared but its value is never read.
+src/components/ui/Spinner/Spinner.tsx(3,1): error TS6133: 'React' is declared but its value is never read.
+src/components/ui/Table/Table.tsx(3,8): error TS6133: 'React' is declared but its value is never read.
+src/components/ui/Toast/Toast.tsx(3,1): error TS6192: All imports in import declaration are unused.
+src/components/ui/Toggle/Toggle.tsx(3,8): error TS6133: 'React' is declared but its value is never read.
