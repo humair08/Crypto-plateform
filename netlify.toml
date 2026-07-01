@@ -1,0 +1,13 @@
+[build]
+  base = "frontend"
+  command = "npm ci && npm run build"
+  publish = ".next"
+  functions = "netlify/functions"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+# If you want a static export instead, replace the build command with:
+# command = "npm ci && npm run build && npm run export"
+# publish = "out"
+# and add a redirect block for SPA fallback.

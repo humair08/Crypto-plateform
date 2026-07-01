@@ -50,6 +50,7 @@
     "eslint-config-next": "^14.0.4",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
-    "postcss": "^8.4.32"
+    "postcss": "^8.4.32",
+    "@netlify/plugin-nextjs": "^7.0.0"
   }
 }
