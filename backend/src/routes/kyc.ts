@@ -1,6 +1,6 @@
-import { Router, Request, Response } from 'express';
+import { Router, Request, Response, NextFunction } from 'express';
 import { prisma } from '@/db/client';
-import { verifyToken } from './auth';
+import { verifyToken } from '@/utils/jwt';
 
 const router = Router();
 
@@ -10,12 +10,13 @@ interface AuthRequest extends Request {
 }
 
 // Middleware to verify auth
-const authenticateToken = (req: AuthRequest, res: Response, next: Function) => {
+const authenticateToken = (req: AuthRequest, res: Response, next: NextFunction): Response | void => {
   const authHeader = req.headers['authorization'];
   const token = authHeader && authHeader.split(' ')[1];
 
   if (!token) {
-    return res.status(401).json({ success: false, error: 'No token provided' });
+    res.status(401).json({ success: false, error: 'No token provided' });
+    return;
   }
 
   try {
@@ -24,11 +25,12 @@ const authenticateToken = (req: AuthRequest, res: Response, next: Function) => {
     next();
   } catch (error) {
     res.status(403).json({ success: false, error: 'Invalid token' });
+    return;
   }
 };
 
 // GET /api/kyc/status
-router.get('/status', authenticateToken, async (req: AuthRequest, res: Response) => {
+router.get('/status', authenticateToken, async (req: AuthRequest, res: Response): Promise<any> => {
   try {
     const userId = req.user?.id;
     if (!userId) return res.status(401).json({ success: false, error: 'Unauthorized' });
@@ -55,7 +57,7 @@ router.get('/status', authenticateToken, async (req: AuthRequest, res: Response)
 });
 
 // POST /api/kyc/submit
-router.post('/submit', authenticateToken, async (req: AuthRequest, res: Response) => {
+router.post('/submit', authenticateToken, async (req: AuthRequest, res: Response): Promise<any> => {
   try {
     const userId = req.user?.id;
     if (!userId) return res.status(401).json({ success: false, error: 'Unauthorized' });
@@ -115,7 +117,7 @@ router.post('/submit', authenticateToken, async (req: AuthRequest, res: Response
 });
 
 // POST /api/kyc/reject
-router.post('/reject', authenticateToken, async (req: AuthRequest, res: Response) => {
+router.post('/reject', authenticateToken, async (req: AuthRequest, res: Response): Promise<any> => {
   try {
     const userId = req.user?.id;
     if (!userId) return res.status(401).json({ success: false, error: 'Unauthorized' });

@@ -125,12 +125,25 @@ router.post('/confirm', authenticateToken, async (req: AuthRequest, res: Respons
     }
 
     if (paymentIntent.status === 'succeeded') {
+      // Ensure the user has a wallet and use its id for the transaction
+      let wallet = await prisma.wallet.findUnique({ where: { userId } });
+      if (!wallet) {
+        wallet = await prisma.wallet.create({
+          data: {
+            userId,
+            balance: 0,
+            currency: 'USD',
+            address: `0x${Math.random().toString(16).slice(2).padEnd(40, '0')}`,
+          },
+        });
+      }
+
       const transaction = await prisma.transaction.create({
         data: {
+          walletId: wallet.id,
           userId,
           type: 'DEPOSIT',
           amount,
-          balance: Number(user.balance) + amount,
           reference: paymentIntent.id,
         },
       });
